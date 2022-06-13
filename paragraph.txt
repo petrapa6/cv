@@ -1,0 +1,21 @@
+Pavel Petracek is a 3rd year Ph.D. student within the Multi-Robot Systems group at the Dept. of Cybernetics, FEE CTU.
+Under the supervision of doc. Martin Saska, Pavel investigates novel methods for improving accuracy and robustness of autonomy suited for mobile robotic platforms with constrained computational resources, such as aerial vehicles or autonomous cars.
+His research focuses primarily on detecting and preventing degeneration in perception and 3D localization emerging as an effect of harsh environmental conditions (e.g., dust or fog) and perceptual degradation in geometrically feature-less environments.
+But his research interests also touch on novel concepts for decentralized control of aerial teams, particularly the notion of deriving theoretical ideas for swarming under no communication to maximize collective attributes of localization and mapping.
+
+During the initial two years of his doctoral studies, Pavel has shown excellent capabilities to develop novel theoretical ideas, publish them in the best robotic journals, and transfer them to real-world practice.
+His contributions already pushed state of the art, as justified by the publication record of 8 journal publications (four as the first author) and three co-authored contributions to conference proceedings since 2019.
+Among others, the contributions include novel algorithms for lightweight laser-inertial global-to-local localization tailored to interiors of historical monuments, a fast and robust algorithm for online filtering of dust from raw LiDAR data, or a novel bio-inspired local-information model for swarming aerial robots that are not mutually communicating yet are capable of dynamic aggregation and navigation.
+
+As a core member of the research team accountable for deploying aerial robots in the DARPA Subterranean Challenge, he was responsible for accurate and robust localization and mapping, a module essential for the functionality of the rest of navigation stack.
+These contributions helped the team CTU-CRAS-NORLAB win 1M USD in competition prize money and to receive funding of 2M USD for further research in robotic search & rescue at the Dept. of Cybernetics, a research area with great potential to save human lives.
+His contributions were also directly applied in the Dronument project....
+
+
+##############
+
+of the robots as well as for the entire system design and its integration. 
+pushes beyond the state of the art
+
+He shown very good schopnosti in transfering his ideas to the real-world.
+To do so, he utilizes concepts from ... as well as novel methods of artificial intelligence.
