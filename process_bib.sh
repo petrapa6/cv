@@ -9,10 +9,22 @@ elif [ -x "$(whereis vim | awk '{print $2}')" ]; then
   HEADLESS=""
 fi
 
-INPUT_FILE=papis_export.bib
+INPUT_FILE=zotero_export.bib
 OUTPUT_FILE=main.bib
 
 cp $INPUT_FILE $OUTPUT_FILE
+
+# Remove {} in author
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/{//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/}//g' -c "wqa" -- "$OUTPUT_FILE"
+
+# Insert {} around author
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/norm f=wi{$a F,i}' -c "wqa" -- "$OUTPUT_FILE"
+
+# Remove double {{ }} from title
+$VIM_BIN $HEADLESS -nEs -c '%g/title.*=/s/{//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/title.*=/s/}//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/title.*=/norm f=wi{$a F,i}' -c "wqa" -- "$OUTPUT_FILE"
 
 # Line deletors
 $VIM_BIN $HEADLESS -nEs -c '%g/type =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
@@ -26,6 +38,39 @@ $VIM_BIN $HEADLESS -nEs -c '%g/issn =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/onlinelibrary\.wiley\.com/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/doi\.org/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/mdpi\.com/norm dd' -c "wqa" -- "$OUTPUT_FILE"
+
+$VIM_BIN $HEADLESS -nEs -c '%s/ě/e/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/š/s/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/č/c/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/ř/r/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/ž/z/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/ý/y/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/á/a/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/í/i/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/é/e/g' -c "wqa" -- "$OUTPUT_FILE"
+
+$VIM_BIN $HEADLESS -nEs -c '%s/Ě/E/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Š/S/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Č/C/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Ř/R/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Ž/Z/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Ý/Y/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Á/A/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Í/I/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/É/E/g' -c "wqa" -- "$OUTPUT_FILE"
+
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/\\n //g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/\\v //g' -c "wqa" -- "$OUTPUT_FILE"
+
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/\\n//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/\\v//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "%g/author.*=/s/\\\'//g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "%g/author.*=/s/\\\\//g" -c "wqa" -- "$OUTPUT_FILE"
+
+$VIM_BIN $HEADLESS -nEs -c '%g/title.*=/s/\\n//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/title.*=/s/\\v//g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "%g/title.*=/s/\\\'//g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "%g/title.*=/s/\\\\//g" -c "wqa" -- "$OUTPUT_FILE"
 
 # Title field correction
 $VIM_BIN $HEADLESS -nEs -c '%g/title = {/norm f{a{$F}i}' -c "wqa" -- "$OUTPUT_FILE" # add {} brackets around title
