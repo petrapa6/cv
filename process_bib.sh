@@ -14,6 +14,10 @@ OUTPUT_FILE=main.bib
 
 cp $INPUT_FILE $OUTPUT_FILE
 
+# Replace \textendash{} and \textemdash{}
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/\\\textendash{}/--/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/\\\textemdash{}/---/g" -c "wqa" -- "$OUTPUT_FILE"
+
 # Remove {} in author
 $VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/{//g' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/author.*=/s/}//g' -c "wqa" -- "$OUTPUT_FILE"
@@ -33,6 +37,10 @@ $VIM_BIN $HEADLESS -nEs -c '%g/eprint =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/organization =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/publisher =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/issn =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/address =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/series =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/isbn =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%g/copyright =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 
 # $VIM_BIN $HEADLESS -nEs -c '%g/url =/norm dd' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/onlinelibrary\.wiley\.com/norm dd' -c "wqa" -- "$OUTPUT_FILE"
@@ -91,15 +99,17 @@ $VIM_BIN $HEADLESS -nEs -c '%g/month = /s/october/10' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/month = /s/november/11' -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c '%g/month = /s/december/12' -c "wqa" -- "$OUTPUT_FILE"
 
-# Bold addendum
-$VIM_BIN $HEADLESS -nEs -c '%g/addendum = {/norm f{a\textbf{$F}i}' -c "wqa" -- "$OUTPUT_FILE"
-
-# Bold name
-$VIM_BIN $HEADLESS -nEs -c '%s/Petracek, Pavel/\\textbf\{P. Petracek\}/g' -c "wqa" -- "$OUTPUT_FILE"
-$VIM_BIN $HEADLESS -nEs -c '%s/Petracek, P\./\\textbf\{P. Petracek\}/g' -c "wqa" -- "$OUTPUT_FILE"
-$VIM_BIN $HEADLESS -nEs -c '%s/Pavel Petracek/\\textbf\{P. Petracek\}/g' -c "wqa" -- "$OUTPUT_FILE"
-
 # Conference shortening
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*Advances in Neural Information Processing Systems/NIPS/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*Third International Conference on 3-D Digital Imaging and Modeling/3DIM/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*Fourth International Conference on 3-D Digital Imaging and Modeling/3DIM/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*Proceedings of the IEEE COnference on Computer Vision and Pattern Recognition/IEEE\/CVF CVPR/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*In 2018//g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*in 2018//g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*in 2012//g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*International Journal of Geo-Information/JGI/g" -c "wqa" -- "$OUTPUT_FILE"
+# $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*IEEE VGTC Conference on Point-Based Graphics/IEEE VGTC PBG//g" -c "wqa" -- "$OUTPUT_FILE"
+
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*International Conference on Unmanned Aircraft Systems (ICUAS)/ICUAS/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*IEEE European Conference on Mobile Robots (ECMR)/IEEE ECMR/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*IEEE International Conference on Emerging Technologies and Factory Automation (ETFA)/IEEE ETFA/g" -c "wqa" -- "$OUTPUT_FILE"
@@ -108,6 +118,7 @@ $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE\/RSJ Internatio
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE Intelligent Transportation Systems Conference/IEEE ITSC/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE\/CVF International Conference on Computer Vision (ICCV)/IEEE\/CVF ICCV/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE\/CVF Conference on Computer Vision and Pattern Recognition (CVPR)/IEEE\/CVF CVPR/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE Conference on Computer Vision and Pattern Recognition/IEEE CVPR/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*IEEE International Conference on Real-time Computing and Robotics (RCAR)/IEEE RCAR/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/Modelling and Simulation for Autonomous Systems (MESAS)/MESAS/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/IEEE International Conference on Control, Automation, Robotics and Vision (ICARCV)/IEEE ICARCV/g" -c "wqa" -- "$OUTPUT_FILE"
@@ -117,6 +128,8 @@ $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/2018 ACM\/IEEE 9th Internatio
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/2016 8th International Conference on Modelling, Identification and Control (ICMIC)/IEEE ICMIC/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/Australasian Conference on Robotics and Automation (ACRA)/ACRA/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/Robotics and Automation Letters (RAL)/Robotics and Automation Letters/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/Robotics and Automation Letters/RA-L/g" -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/Robotics and Automation Magazine/RA-M/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*International Conference on Robotics and Automation (ICRA)/IEEE ICRA/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\w*\s*IEEE International Conference on Robotics and Automation/IEEE ICRA/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/\(IEEE\)*\s*[0-9]*\s*\w*\s*Conference on Decision and Control (CDC)/IEEE CDC/g" -c "wqa" -- "$OUTPUT_FILE"
@@ -125,3 +138,12 @@ $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\(IEEE\)*\s*\w*\s*In
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\(th\)*\s*\(IEEE\)*\s*\w*\s*International Conference on Automation Science and Engineering (CASE)/IEEE CASE/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\(IEEE\)*\s*\w*\s*International Symposium on Safety, Security and Rescue Robotics (SSRR)/IEEE SSRR/g" -c "wqa" -- "$OUTPUT_FILE"
 $VIM_BIN $HEADLESS -nEs -c "set ignorecase" -c "%s/[0-9]*\s*\(IEEE\)*\s*\w*\s*International Conference on Unmanned Systems (ICUS)/IEEE ICUS/g" -c "wqa" -- "$OUTPUT_FILE"
+
+# Bold name
+$VIM_BIN $HEADLESS -nEs -c '%s/Petracek, Pavel/P. Petracek/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Petracek, P\./P. Petracek/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/Pavel Petracek/P. Petracek/g' -c "wqa" -- "$OUTPUT_FILE"
+$VIM_BIN $HEADLESS -nEs -c '%s/P\. Petracek/\\textbf\{P. Petracek\}/g' -c "wqa" -- "$OUTPUT_FILE"
+
+# Bold note
+$VIM_BIN $HEADLESS -nEs -c '%g/note = {/norm f{a\textbf{$F}i}' -c "wqa" -- "$OUTPUT_FILE"
