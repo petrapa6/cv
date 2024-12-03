@@ -1,27 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% "ModernCV" CV and Cover Letter
-% LaTeX Template
-% Version 1.1 (9/12/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Xavier Danaux (xdanaux@gmail.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% Important note:
-% This template requires the moderncv.cls and .sty files to be in the same 
-% directory as this .tex file. These files provide the resume style and themes 
-% used for structuring the document.
-%https://github.com/petrapa6/cv/blob/master/about/paragraph.md
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 \usepackage{standalone}
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+
+\usepackage{multicol}
 
 \definecolor{color0}{rgb}{0,0,0}% black
 \definecolor{color1}{cmyk}{1, 0.43, 0, 0}% light blue
@@ -131,14 +112,36 @@
 \cventry{Languages}{}{}{Czech (native speaker), English}{}{}
 % \cventry{Work address}{}{}{Karlovo namesti 13, 121 35 Prague 2}{}{}
 
+% \section{Skills}
+
+% \begin{multicols}{2}
+
+% \vspace{2mm}
+% \subsection{Hard}
+% \vspace{2mm}
+
+% \cventry{}{Mathematics and Algorithms}{}{}{}{}
+% \cventry{}{Robotics Programming: }{}{}{C++, Python, Matlab, ROS, OpenCV, etc}{}
+% \cventry{}{Embedded Systems and Sensors}{}{}{}{}
+% \cventry{}{Simulations, Testing, and Validation}{}{}{}{}
+
+% \columnbreak
+
+% \vspace{2mm}
+% \subsection{Soft}
+% \vspace{2mm}
+
+% \cventry{}{Team \& product management}{}{}{}{}
+
+% \end{multicols}
 
 \section{Education}
 
 \cventry{2019--2024}{PhD in Mobile Robotics, }{}{}{Department of Cybernetics, Faculty of Electrical Engineering, Czech Technical University in Prague (FEE CTU)}
 { --- \textbf{dissertation}: Robust UAV localization in perception-degraded environments (\Colorhref{https://mrs.fel.cvut.cz/data/papers/petracek_phd_thesis.pdf}{pdf})\\
   --- \textbf{supervisor}: doc. Ing. Martin Saska, Dr. rer. nat.\\
-  --- \textbf{publication count} since 2019: 14 impacted journals, 3 conference proceedings\\
-  --- \textbf{h-index}: 8 in WoS, 14 in Google Scholar, \textbf{citations count}: 170+ in WoS, 580+ in Google Scholar}
+  --- \textbf{publication count} since 2019: 19 publications (14 impacted journals)\\
+  --- \textbf{h-index}: 9 in WoS, 15 in Google Scholar, \textbf{citations count}: 190+ in WoS, 630+ in Google Scholar}
 
 \cventry{2017--2019}{Engineer in Cybernetics and Robotics, }{}{}{FEE CTU}{}
 % {Finished with self-contained system for documenting interiors of historical buildings with an autonomous UAV}
@@ -153,7 +156,7 @@
   --- \textbf{experience:} co-development of the MRS UAV System (\Colorhref{https://github.com/ctu-mrs/mrs_uav_system}{Github}) | research applied in real practice (heritage preservation, speleology, search \& rescue, firefighting) | robotic experiments and competitions | demos for investors, industrial partners, students, and media | student supervision | project management | field popularization | academic teaching | events organization (summer schools and workshops)}
 
 \vspace{2mm}
-\subsection{Research projects \& robotic competitions}
+\subsection{Selected projects \& competitions}
 \vspace{2mm}
 \cventry{2020--2022}{DARPA Subterranean Challenge (\Colorhref{http://mrs.felk.cvut.cz/projects/darpa}{web}): }{}{}{Exploring unknown subterranean environments with a cooperative team of ground and aerial autonomous robots}{
   --- \textbf{contributions:} novel methods of onboard perception, localization, and mapping of UAVs in perception-degraded environments | UAV system design | real-time systems integration | system evaluation and testing | key member for in situ deployment of aerial robots}
@@ -171,11 +174,11 @@
 \section{Experience: Industry}
 \vspace{2mm}
 
-\cventry{2023--present}{Fly4Future s.r.o.: }{}{R\&D projects lead}{}{\hfill Utilizing my field experience in transferring state-of-the-art research in aerial robotics to industry}
+\cventry{2023--present}{Fly4Future s.r.o.: }{}{R\&D Projects Lead}{}{Leading a talented team of R\&D researchers and engineers. Innovating a variety of industries with a cutting-edge research in autonomous aerial robotics \& AI.}
 \cvitem{}{%
   \vspace{-0.6em}
   \begin{itemize}
-    \item \text{[}2024--present, grant TAČR Trend\text{]} Innovating autonomous interior inspection in project INDAIR
+    \item \text{[}2024--present, TAČR Trend\text{]} Rethinking indoor inspection with drone autonomy
   \end{itemize}
 }
 
