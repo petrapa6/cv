@@ -1,27 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% "ModernCV" CV and Cover Letter
-% LaTeX Template
-% Version 1.1 (9/12/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Xavier Danaux (xdanaux@gmail.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% Important note:
-% This template requires the moderncv.cls and .sty files to be in the same 
-% directory as this .tex file. These files provide the resume style and themes 
-% used for structuring the document.
-%https://github.com/petrapa6/cv/blob/master/about/paragraph.md
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 \usepackage{standalone}
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+
+\usepackage{multicol}
 
 \definecolor{color0}{rgb}{0,0,0}% black
 \definecolor{color1}{cmyk}{1, 0.43, 0, 0}% light blue
@@ -132,6 +113,28 @@
 \cventry{Languages}{}{}{Czech (native speaker), English}{}{}
 % \cventry{Work address}{}{}{Karlovo namesti 13, 121 35 Prague 2}{}{}
 
+% \section{Skills}
+
+% \begin{multicols}{2}
+
+% \vspace{2mm}
+% \subsection{Hard}
+% \vspace{2mm}
+
+% \cventry{}{Mathematics and Algorithms}{}{}{}{}
+% \cventry{}{Robotics Programming: }{}{}{C++, Python, Matlab, ROS, OpenCV, etc}{}
+% \cventry{}{Embedded Systems and Sensors}{}{}{}{}
+% \cventry{}{Simulations, Testing, and Validation}{}{}{}{}
+
+% \columnbreak
+
+% \vspace{2mm}
+% \subsection{Soft}
+% \vspace{2mm}
+
+% \cventry{}{Team \& product management}{}{}{}{}
+
+% \end{multicols}
 
 % \section{Skills}
 
@@ -158,7 +161,7 @@
   --- \textbf{experience:} co-development of the MRS UAV System (\Colorhref{https://github.com/ctu-mrs/mrs_uav_system}{Github}) | research applied in real practice (heritage preservation, speleology, search \& rescue, firefighting) | robotic experiments and competitions | demos for investors, industrial partners, students, and media | student supervision | project management | field popularization | academic teaching | events organization (summer schools and workshops)}
 
 \vspace{2mm}
-\subsection{Research projects \& robotic competitions}
+\subsection{Selected projects \& competitions}
 \vspace{2mm}
 \cventry{2020--2022}{DARPA Subterranean Challenge (\Colorhref{http://mrs.felk.cvut.cz/projects/darpa}{web}): }{}{}{Exploring unknown subterranean environments with a cooperative team of ground and aerial autonomous robots}{
   --- \textbf{contributions:} novel methods of onboard perception, localization, and mapping of UAVs in perception-degraded environments | UAV system design | real-time systems integration | system evaluation and testing | key member for in situ deployment of aerial robots}
@@ -313,49 +316,26 @@
 \cventry{}{Martin Fischer, }{}{}{Cybernetics and robotics, FEE CTU}{--- thesis: Lidar and multi-camera calibration and fusion (Dean's price for astounding Bachelor thesis)}
 \cventry{}{Azat Mukhametshin, }{}{}{Open informatics, FEE CTU}{--- thesis: World management and coverage path planning in the MRS UAV System}
 
-% \section{Peer-reviewed publications}
+\section{Peer-reviewed publications}
 
-% \vspace{2mm}
-% \subsection{Journal articles}
+\vspace{2mm}
+\subsection{Journal articles}
 
-% \vspace{0.2cm}
-% \begin{refcontext}
-%   \nocite{*}
-%   \printbibliography[keyword={first\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
-%   \printbibliography[keyword={second\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
-%   \printbibliography[keyword={third\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
-%   \printbibliography[notkeyword={first\_author},notkeyword={second\_author},notkeyword={third\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
-% \end{refcontext}
+\vspace{0.2cm}
+\begin{refcontext}
+  \nocite{*}
+  \printbibliography[keyword={first\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
+  \printbibliography[keyword={second\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
+  \printbibliography[keyword={third\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
+  \printbibliography[notkeyword={first\_author},notkeyword={second\_author},notkeyword={third\_author},keyword={journal},notkeyword={citation},heading=none,title={},env=refbibenv]
+\end{refcontext}
 
-% \subsection{Conference articles}
+\subsection{Conference articles}
 
-% \vspace{0.2cm}
-% \begin{refcontext}
-%   \nocite{*}
-%   \printbibliography[keyword={mine},keyword={conference},notkeyword={citation},heading=none,title={},env=refbibenv]
-% \end{refcontext}
-
-% \section{Position of Responsibility}
-% \cventry{2016-2020}{Executive member of IEEE Student Branch}{}{IIT ABC}{}{}
-% \cventry{April 1-5, 2019}{Organizer, GIAN Workshop on subjects}{}{IIT ABC}{}{}
-%----------------------------------------------------------------------------------------
-
-% \section{Teaching Assistantship}
-% \cventry{Fall, 2019 :}{CS564: Foundations of Machine Learning}{}{IIT ABC}{}{}
-% \cventry{Spring, 2019 :}{CS342: Operating System Lab}{}{IIT ABC}{}{}
-% \cventry{Fall, 2018 :}{CS564: Foundations of Machine Learning}{}{IIT ABC}{}{}
-
-% \section{Referees}
-
-% \begin{tabular}{lr}
-% % Referee 1
-% \begin{minipage}[t]{3in}
-% \textbf{doc. Ing. Martin Saska, Dr. rer. nat.}\\
-% \textit{Department of Cybernetics, FEE CTU} \\
-% \textit{Faculty of Electrical Engineering}\\
-% Czech Technical University in Prague\\
-% \Letter\ \href{mailto:martin.saska@fel.cvut.cz}{martin.saska@fel.cvut.cz}
-% \end{minipage}
-% \end{tabular}
+\vspace{0.2cm}
+\begin{refcontext}
+  \nocite{*}
+  \printbibliography[keyword={mine},keyword={conference},notkeyword={citation},heading=none,title={},env=refbibenv]
+\end{refcontext}
 
 \end{document}
