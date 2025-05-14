@@ -3,9 +3,11 @@
 
 # bash process_bib.sh
 
-"gs" -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -dPrinted=false -sOutputFile=build/cv.pdf build/main.pdf
+"gs" -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -dPrinted=false -sOutputFile=academic/build/cv.pdf academic/build/main.pdf
+"gs" -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -dPrinted=false -sOutputFile=industrial/build/cv.pdf industrial/build/main.pdf
 
-cp build/cv.pdf cv.pdf
+cp academic/build/cv.pdf academic_cv.pdf
+cp industrial/build/cv.pdf cv.pdf
 
-cd about
-cp paragraph.md paragraph.txt
+# cd about
+# cp paragraph.md paragraph.txt
